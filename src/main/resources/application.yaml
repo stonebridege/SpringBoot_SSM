@@ -1,9 +1,20 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mybatis-example?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 123456
+    dynamic:
+      primary: mybatisexample
+      datasource:
+        mybatisexample:
+          url: jdbc:mysql://localhost:3306/mybatis-example?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: 123456
+        mydb:
+          url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: 123456
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
 mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   configuration:

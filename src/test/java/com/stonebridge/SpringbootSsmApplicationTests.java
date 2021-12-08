@@ -1,13 +1,13 @@
 package com.stonebridge;
 
+import com.stonebridge.domain.Goods;
 import com.stonebridge.domain.User;
-import com.stonebridge.mapper.UserMapper;
+import com.stonebridge.service.GoodsService;
 import com.stonebridge.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @SpringBootTest
@@ -16,10 +16,8 @@ class SpringbootSsmApplicationTests {
     @Autowired
     private UserService userService;
 
-
-    @Test
-    void contextLoads() {
-    }
+    @Autowired
+    private GoodsService goodsService;
 
     @Test
     void testGetUser() {
@@ -36,6 +34,14 @@ class SpringbootSsmApplicationTests {
         List<User> list = userService.selectList();
         for (User user : list) {
             System.out.println(user);
+        }
+    }
+
+    @Test
+    void testSelectListGoods() {
+        List<Goods> list = goodsService.queryAll();
+        for (Goods goods : list) {
+            System.out.println(goods);
         }
     }
 

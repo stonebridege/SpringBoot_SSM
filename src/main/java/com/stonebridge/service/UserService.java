@@ -1,7 +1,7 @@
 package com.stonebridge.service;
 
 import com.stonebridge.domain.User;
-import com.stonebridge.mapper.UserMapper;
+import com.stonebridge.mapper.mybatisExample.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,13 +34,10 @@ public class UserService {
         user.setAge(18);
         user.setEmail("stonebridge@gamil.com");
         Integer row = userMapper.insert(user);
-        System.out.println(1 / 0);
-        System.out.println("影响条数：" + row);
     }
 
     @Transactional
     public void updateUser(Integer id) {
         userMapper.updateUserById(id, "trump", "Trump");
-        System.out.println(1/0);
     }
 }
