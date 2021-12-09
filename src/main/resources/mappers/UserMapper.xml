@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.stonebridge.mapper.UserMapper">
+<mapper namespace="com.stonebridge.mapper.mybatisExample.UserMapper">
     <!--配置查询所有-->
     <select id="getUser" resultType="com.stonebridge.domain.User">
         SELECT *

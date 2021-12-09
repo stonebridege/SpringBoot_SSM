@@ -1,18 +1,20 @@
 spring:
   datasource:
     dynamic:
-      primary: mybatisexample
       datasource:
         mybatisexample:
+          type: com.alibaba.druid.pool.DruidDataSource
           url: jdbc:mysql://localhost:3306/mybatis-example?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
           driver-class-name: com.mysql.cj.jdbc.Driver
           username: root
           password: 123456
         mydb:
+          type: com.alibaba.druid.pool.DruidDataSource
           url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
           driver-class-name: com.mysql.cj.jdbc.Driver
           username: root
           password: 123456
+      primary: mybatisexample
   autoconfigure:
     exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
 mybatis-plus:
