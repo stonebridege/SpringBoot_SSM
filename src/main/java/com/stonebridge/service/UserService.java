@@ -13,20 +13,13 @@ import java.util.Map;
 
 @Service
 public class UserService {
-    UserMapper userMapper;
-
-    JdbcTemplate jdbcTemplateExp;
 
     @Autowired
-    public void setUserMapper(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
+    UserMapper userMapper;
 
     @Autowired
     @Qualifier("jdbcTemplateExp")
-    public void setJdbcTemplateExp(JdbcTemplate jdbcTemplateExp) {
-        this.jdbcTemplateExp = jdbcTemplateExp;
-    }
+    JdbcTemplate jdbcTemplateExp;
 
     public User getUserById(Integer id) {
         return userMapper.getUser(id);

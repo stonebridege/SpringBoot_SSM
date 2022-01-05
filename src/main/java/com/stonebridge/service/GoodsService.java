@@ -12,26 +12,15 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@DS("mybatisexample")
+@DS("mydb")
 public class GoodsService {
+    @Autowired
     GoodsMapper goodsMapper;
-
-
-    JdbcTemplate jdbcTemplateMydb;
 
     @Autowired
     @Qualifier("jdbcTemplateMydb")
-    public void setJdbcTemplateMydb(JdbcTemplate jdbcTemplateMydb) {
-        this.jdbcTemplateMydb = jdbcTemplateMydb;
-    }
+    JdbcTemplate jdbcTemplateMydb;
 
-    @Autowired
-    public void setGoodsMapper(GoodsMapper goodsMapper) {
-        this.goodsMapper = goodsMapper;
-    }
-
-
-    @DS("mydb")
     public Map<String, Object> queryGoodsById(Integer id) {
         return jdbcTemplateMydb.queryForMap("SELECT * FROM sp_goods WHERE goods_id=?", new Object[]{id});
     }
