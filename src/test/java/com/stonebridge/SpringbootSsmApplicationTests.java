@@ -28,7 +28,10 @@ class SpringbootSsmApplicationTests {
     void testGetUser() {
         User user = userService.getUserById(13);
         System.out.println(user);
-        //User(id=13, userName=Trump, password=123456, name=trump, age=18, email=trump@gamil.com)
+        // ==>  Preparing: SELECT * FROM tb_user WHERE id = ?
+        // ==> Parameters: 13(Integer)
+        // <==      Total: 1
+        //User(id=13, userName=Trump, password=123456, name=trump, age=18, email=stonebridge@gamil.com)
     }
 
     /**
@@ -40,8 +43,13 @@ class SpringbootSsmApplicationTests {
         for (User user : list) {
             System.out.println(user);
         }
+        // ==>  Preparing: SELECT id,user_name,password,name,age,email FROM tb_user
+        // ==> Parameters:
+        // <==      Total: 4
         //User(id=13, userName=Trump, password=123456, name=trump, age=18, email=trump@gamil.com)
         //User(id=16, userName=Trump, password=123456, name=trump, age=18, email=trump@gamil.com)
+        //User(id=17, userName=Stonebridge, password=123456, name=stonebride, age=18, email=stonebridge@gamil.com)
+        //User(id=18, userName=Stonebridge, password=123456, name=stonebride, age=18, email=stonebridge@gamil.com)
     }
 
     /**
@@ -61,6 +69,9 @@ class SpringbootSsmApplicationTests {
     void testQueryGoodsById() {
         Goods goods = goodsService.getGoodsById(45);
         System.out.println(goods.getGoodsName());
+        // ==>  Preparing: SELECT * FROM sp_goods WHERE goods_id = ?
+        // ==> Parameters: 45(Integer)
+        // <==      Total: 1
         //儿童玩具海洋球池婴儿帐篷宝宝热带雨林运动会投手球池投篮游戏屋波波球户外玩具
     }
 
@@ -71,6 +82,9 @@ class SpringbootSsmApplicationTests {
     void testSelectListGoods() {
         List<Goods> list = goodsService.queryAll();
         System.out.println(list.get(7).getGoodsName());
+        // ==>  Preparing: SELECT goods_id,goods_name,goods_price,goods_number,goods_weight,cat_id,goods_introduce FROM sp_goods
+        // ==> Parameters:
+        // <==      Total: 927
         //PPTV-32C3 32英寸 1GB+8GB 4核 64位处理器 高清智能网络WIFI平板电视机
     }
 

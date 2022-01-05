@@ -23,4 +23,4 @@ mybatis-plus:
     map-underscore-to-camel-case: true
 logging:
   level:
-    com.stonebridge.mapper.UserMapper: debug
+    com.stonebridge.mapper.*: debug
