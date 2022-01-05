@@ -28,6 +28,7 @@ class SpringbootSsmApplicationTests {
     void testGetUser() {
         User user = userService.getUserById(13);
         System.out.println(user);
+        //User(id=13, userName=Trump, password=123456, name=trump, age=18, email=trump@gamil.com)
     }
 
     /**
@@ -39,6 +40,8 @@ class SpringbootSsmApplicationTests {
         for (User user : list) {
             System.out.println(user);
         }
+        //User(id=13, userName=Trump, password=123456, name=trump, age=18, email=trump@gamil.com)
+        //User(id=16, userName=Trump, password=123456, name=trump, age=18, email=trump@gamil.com)
     }
 
     /**
@@ -48,6 +51,7 @@ class SpringbootSsmApplicationTests {
     void testQueryList() {
         List<Map<String, Object>> list = userService.queryList();
         System.out.println(list.get(0).get("user_name"));
+        //Trump
     }
 
     /**
@@ -55,7 +59,9 @@ class SpringbootSsmApplicationTests {
      */
     @Test
     void testQueryGoodsById() {
-        System.out.println(goodsService.getGoodsById(1));
+        Goods goods = goodsService.getGoodsById(45);
+        System.out.println(goods.getGoodsName());
+        //儿童玩具海洋球池婴儿帐篷宝宝热带雨林运动会投手球池投篮游戏屋波波球户外玩具
     }
 
     /**
@@ -64,9 +70,8 @@ class SpringbootSsmApplicationTests {
     @Test
     void testSelectListGoods() {
         List<Goods> list = goodsService.queryAll();
-        for (Goods goods : list) {
-            System.out.println(goods);
-        }
+        System.out.println(list.get(7).getGoodsName());
+        //PPTV-32C3 32英寸 1GB+8GB 4核 64位处理器 高清智能网络WIFI平板电视机
     }
 
     /**
@@ -74,7 +79,8 @@ class SpringbootSsmApplicationTests {
      */
     @Test
     void testJdbcTemplate() {
-        Map<String, Object> map = goodsService.queryGoodsById(1);
+        Map<String, Object> map = goodsService.queryGoodsById(45);
         System.out.println(StrUtil.trim(map.get("goods_name")));
+        //儿童玩具海洋球池婴儿帐篷宝宝热带雨林运动会投手球池投篮游戏屋波波球户外玩具
     }
 }
