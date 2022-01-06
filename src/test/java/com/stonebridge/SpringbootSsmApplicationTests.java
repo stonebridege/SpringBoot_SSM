@@ -1,8 +1,10 @@
 package com.stonebridge;
 
 import com.stonebridge.domain.Goods;
+import com.stonebridge.domain.Order;
 import com.stonebridge.domain.User;
 import com.stonebridge.service.GoodsService;
+import com.stonebridge.service.OrderService;
 import com.stonebridge.service.UserService;
 import com.stonebridge.utils.StrUtil;
 import org.junit.jupiter.api.Test;
@@ -20,6 +22,9 @@ class SpringbootSsmApplicationTests {
 
     @Autowired
     private GoodsService goodsService;
+
+    @Autowired
+    private OrderService orderService;
 
     /**
      * user测试mybatis自己写的方法
@@ -97,4 +102,41 @@ class SpringbootSsmApplicationTests {
         System.out.println(StrUtil.trim(map.get("goods_name")));
         //儿童玩具海洋球池婴儿帐篷宝宝热带雨林运动会投手球池投篮游戏屋波波球户外玩具
     }
+
+    /**
+     * Order测试mybatis自己写的方法
+     */
+    @Test
+    void testQueryOrderById() {
+        Order order = orderService.getOrderById(42);
+        System.out.println(order.toString());
+        // ==>  Preparing: SELECT * FROM sp_order WHERE order_id = ?
+        // ==> Parameters: 42(Integer)
+        // <==      Total: 1
+        //Order(orderId=42, userId=133, orderNumber=itcast-59e411eaaccc9, orderPrice=222.0)
+    }
+
+    /**
+     * Order测试mybatis plus的方法
+     */
+    @Test
+    void testSelectListOrder() {
+        List<Order> list = orderService.queryAll();
+        System.out.println(list.get(7).toString());
+        //==>  Preparing: SELECT order_id,user_id,order_number,order_price FROM sp_order
+        //==> Parameters:
+        //Total: 27
+        //Order(orderId=49, userId=1, orderNumber=itcast-g7kmck6gjjauhmp01, orderPrice=20.0)
+    }
+
+    /**
+     * Goods测试jdbcTemplate的方法
+     */
+    @Test
+    void testJdbcTemplate1() {
+        Map<String, Object> map = orderService.queryOrderById(42);
+        System.out.println(StrUtil.trim(map.get("order_number")));
+        //itcast-59e411eaaccc9
+    }
+
 }

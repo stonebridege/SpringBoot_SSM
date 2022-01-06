@@ -25,4 +25,11 @@ public class JdbcTemplateConfig {
     JdbcTemplate jdbcTemplateExp(@Autowired DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
+
+    @Bean(name = "jdbcTemplateTestDB")
+    @DS("testDB")
+    @ConfigurationProperties(prefix = "spring.datasource.dynamic.datasource.testdb")
+    JdbcTemplate jdbcTemplateTestDB(@Autowired DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
 }
