@@ -14,12 +14,20 @@ import java.util.Map;
 @Service
 @DS("testdb")
 public class OrderService {
-    @Autowired
     OrderMapper orderMapper;
+
+    JdbcTemplate jdbcTemplateTestDB;
+
+    @Autowired
+    public void setOrderMapper(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
+    }
 
     @Autowired
     @Qualifier("jdbcTemplateTestDB")
-    JdbcTemplate jdbcTemplateTestDB;
+    public void setJdbcTemplateTestDB(JdbcTemplate jdbcTemplateTestDB) {
+        this.jdbcTemplateTestDB = jdbcTemplateTestDB;
+    }
 
     public Map<String, Object> queryOrderById(Integer id) {
         return jdbcTemplateTestDB.queryForMap("SELECT * FROM sp_order WHERE order_id=?", new Object[]{id});

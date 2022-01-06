@@ -14,12 +14,20 @@ import java.util.Map;
 @Service
 @DS("mydb")
 public class GoodsService {
-    @Autowired
     GoodsMapper goodsMapper;
+
+    JdbcTemplate jdbcTemplateMydb;
+
+    @Autowired
+    public void setGoodsMapper(GoodsMapper goodsMapper) {
+        this.goodsMapper = goodsMapper;
+    }
 
     @Autowired
     @Qualifier("jdbcTemplateMydb")
-    JdbcTemplate jdbcTemplateMydb;
+    public void setJdbcTemplateMydb(JdbcTemplate jdbcTemplateMydb) {
+        this.jdbcTemplateMydb = jdbcTemplateMydb;
+    }
 
     public Map<String, Object> queryGoodsById(Integer id) {
         return jdbcTemplateMydb.queryForMap("SELECT * FROM sp_goods WHERE goods_id=?", new Object[]{id});
