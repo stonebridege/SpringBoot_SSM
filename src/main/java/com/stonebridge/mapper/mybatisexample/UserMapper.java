@@ -1,4 +1,4 @@
-package com.stonebridge.mapper.mybatisExample;
+package com.stonebridge.mapper.mybatisexample;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

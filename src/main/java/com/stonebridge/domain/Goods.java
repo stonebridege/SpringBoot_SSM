@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @TableName("sp_goods")
 public class Goods {
-
     @TableId(type = IdType.AUTO, value = "goods_id")
     private Long goodsId;
     @TableField(value = "goods_name")

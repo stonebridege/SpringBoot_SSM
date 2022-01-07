@@ -1,7 +1,7 @@
 package com.stonebridge.service;
 
 import com.stonebridge.domain.User;
-import com.stonebridge.mapper.mybatisExample.UserMapper;
+import com.stonebridge.mapper.mybatisexample.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;

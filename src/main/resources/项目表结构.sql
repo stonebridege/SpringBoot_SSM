@@ -60,3 +60,30 @@ CREATE TABLE `sp_goods` (
     KEY `add_time` (`add_time`),
     KEY `goods_name_2` (`goods_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='商品表';
+
+#---------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------
+
+CREATE DATABASE IF NOT EXISTS `test`;
+USE `mydb`;
+
+DROP TABLE IF EXISTS `sp_order`;
+CREATE TABLE `sp_order` (
+        `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `user_id` mediumint(8) unsigned NOT NULL COMMENT '下订单会员id',
+        `order_number` varchar(32) NOT NULL COMMENT '订单编号',
+        `order_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单总金额',
+        `order_pay` enum('0','1','2','3') NOT NULL DEFAULT '1' COMMENT '支付方式  0未支付 1支付宝  2微信  3银行卡',
+        `is_send` enum('是','否') NOT NULL DEFAULT '否' COMMENT '订单是否已经发货',
+        `trade_no` varchar(32) NOT NULL DEFAULT '' COMMENT '支付宝交易流水号码',
+        `order_fapiao_title` enum('个人','公司') NOT NULL DEFAULT '个人' COMMENT '发票抬头 个人 公司',
+        `order_fapiao_company` varchar(32) NOT NULL DEFAULT '' COMMENT '公司名称',
+        `order_fapiao_content` varchar(32) NOT NULL DEFAULT '' COMMENT '发票内容',
+        `consignee_addr` text NOT NULL COMMENT 'consignee收货人地址',
+        `pay_status` enum('0','1') NOT NULL DEFAULT '0' COMMENT '订单状态： 0未付款、1已付款',
+        `create_time` int(10) unsigned NOT NULL COMMENT '记录生成时间',
+        `update_time` int(10) unsigned NOT NULL COMMENT '记录修改时间',
+        PRIMARY KEY (`order_id`),
+        UNIQUE KEY `order_number` (`order_number`),
+        KEY `add_time` (`create_time`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COMMENT='订单表';

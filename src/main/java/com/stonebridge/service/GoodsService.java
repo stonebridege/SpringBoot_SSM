@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service(value = "goodsService")
 @DS("mydb")
 public class GoodsService {
+    public static final String SPRING_NAME = "goodsService";
+
     GoodsMapper goodsMapper;
 
     JdbcTemplate jdbcTemplateMydb;
